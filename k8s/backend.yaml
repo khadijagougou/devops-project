@@ -16,8 +16,7 @@ spec:
         - name: backend
           image: khadijagougou/backend-app:latest
           ports:
-            - containerPort: 8080
-
+            - containerPort: 8085
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres:5432/ecommerce_platform
