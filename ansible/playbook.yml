@@ -1,0 +1,16 @@
+- name: Deploy application on Kubernetes
+  hosts: localhost
+  tasks:
+
+    - name: Apply postgres
+      command: kubectl apply -f ../k8s/postgres.yaml
+
+    - name: Apply backend
+      command: kubectl apply -f ../k8s/backend.yaml
+
+    - name: Apply frontend
+      command: kubectl apply -f ../k8s/frontend.yaml
+
+    - name: Apply service
+      command: kubectl apply -f ../k8s/service.yaml
+      

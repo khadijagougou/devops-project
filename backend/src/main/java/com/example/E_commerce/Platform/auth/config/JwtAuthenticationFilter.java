@@ -31,9 +31,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull FilterChain filterChain) throws ServletException, IOException {
         // fl header dyalna endna bzaf dyal les attributs mnhom authorization li katkon mktoba ela had shekal Authorization : Bearer siuehizuehdi(jwt)
         // had la valeur dyal authorization hiya li kan7to fhad la variable authHeader
-        String path = request.getServletPath();
-
-        if (path.startsWith("/api/paypal/")) {
+        String path = request.getRequestURI();
+        if (path.startsWith("/api/paypal/")
+                || path.startsWith("/actuator")) {
             filterChain.doFilter(request, response);
             return;
         }
