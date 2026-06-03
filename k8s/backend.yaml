@@ -17,10 +17,16 @@ spec:
           image: khadijagougou/backend-app:latest
           ports:
             - containerPort: 8080
+
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres:5432/ecommerce_platform
+
             - name: SPRING_DATASOURCE_USERNAME
               value: postgres
+
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "2004"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD

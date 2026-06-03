@@ -26,7 +26,6 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
-    //whitelist homa dok les api li fash kan executiwhom makan7tajoshh l authentication
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -39,6 +38,7 @@ public class SecurityConfiguration {
                                 "/api/category/**",
                                 "/api/coupon/name/**"
                         ).permitAll()
+                        .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/api/files/**").permitAll()
 
                         .requestMatchers(HttpMethod.PUT, "/api/cart/**").hasRole("CUSTOMER")
